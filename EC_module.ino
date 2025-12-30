@@ -1,4 +1,4 @@
-#include "EC_module.h"
+#include "EC_module.h" 
 
 void setup() {
   Serial.begin(115200);
@@ -12,13 +12,31 @@ void setup() {
 }
 
 void loop() {
-    int current_adc = read_sensor_adc();
+    if (Serial.available() > 0) {
+        char command = Serial.read();
+        
+        if (command == '0') {
+            set_measurement_state(0);
+        } else if (command == '1') {
+            set_measurement_state(1);
+        }
+        
+        while (Serial.available()) {
+            Serial.read();
+        }
+    }
     
-    update_moving_average(current_adc);
-    
-    check_and_alert(current_adc);
-    
-    display_data(current_adc);
+    if (measurementState == 1) {
+        int current_adc = read_sensor_adc();
+        
+        update_moving_average(current_adc);
+        
+        check_and_alert(current_adc);
+        
+        display_data(current_adc);
+    } else {
+        
+    }
     
     delay(1000);
 }

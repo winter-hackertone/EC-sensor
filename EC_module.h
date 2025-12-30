@@ -1,5 +1,5 @@
-#ifndef TDS_MONITOR_H
-#define TDS_MONITOR_H
+#ifndef EC_MODULE_H
+#define EC_MODULE_H
 
 #include <Arduino.h>
 
@@ -10,14 +10,16 @@
 #define BUZZER_PIN 4
 
 extern int readings[SIZE];
+extern int readIndex;
 extern long total;
 extern float averageADC;
 extern unsigned long measurementCount;
-extern int readIndex;
+extern int measurementState;
 
 int read_sensor_adc();
 void update_moving_average(int current_adc);
 void check_and_alert(int current_adc);
 void display_data(int current_adc);
+void set_measurement_state(int new_state);
 
 #endif
