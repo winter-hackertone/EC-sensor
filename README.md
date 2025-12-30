@@ -10,6 +10,6 @@
 
 ## 파일 구조
 EC_module/<br>
-├── EC_module.ino
-├── EC_module.h
+├── EC_module.ino<br>
+├── EC_module.h<br>
 └── EC_module.cpp
