@@ -1,6 +1,5 @@
 #include "EC_module.h"
 
-// 전역 변수 정의
 int readings[SIZE];
 int readIndex = 0;
 long total = 0;
@@ -12,13 +11,19 @@ int read_sensor_adc() {
 }
 
 void update_moving_average(int current_adc) {
+    if (current_adc == 0) {
+        return; 
+    }
+
     total = total - readings[readIndex];
+    
     readings[readIndex] = current_adc;
+    
     total = total + current_adc;
     
     readIndex = (readIndex + 1) % SIZE; 
 
-    if (measurementCount < SIZE && current_adc > 0) {
+    if (measurementCount < SIZE) {
         measurementCount++; 
     }
 }

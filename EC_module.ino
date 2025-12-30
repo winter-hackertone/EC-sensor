@@ -21,5 +21,4 @@ void loop() {
     display_data(current_adc);
     
     delay(1000);
-}lay(1000);
 }
