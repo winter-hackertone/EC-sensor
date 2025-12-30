@@ -9,7 +9,7 @@
 5. 그리고 만약 값이 0이라면 배열에 할당되지 않고 통과합니다.
 
 ## 파일 구조
-EC_module/
+EC_module/<br>
 ├── EC_module.ino
 ├── EC_module.h
 └── EC_module.cpp
